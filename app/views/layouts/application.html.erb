@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>wireAlameda: <%= @page_title %></title>
+  <%= stylesheet_link_tag "typepad_base" , :media => "screen" %>
+  <%= stylesheet_link_tag "theme_journal" , :media => "screen" %>
+  <%= stylesheet_link_tag "journal_black_theme" , :media => "screen" %>
+  <%= stylesheet_link_tag "print" , :media => "print" %>
+  <style type="text/css"><%= yield :stylesheets %></style>
+</head>
+<body class="layout-two-column-right">
+  <div id="container">
+    <div id="container-inner" class="pkg">
+      <div id="banner">
+        <div id="banner-inner">
+          <a href="/"><img id="banner-header" src="images/wirealameda_logo_white.png" alt="wireAlameda"></a>
+        </div>
+      </div>
+      <div id="nav">
+        <div class="nav-inner">
+          <ul class="nav-list pkg">
+            <li class="nav-list-item"><a href="/">Home</a></li>
+            <li class="nav-list-item"><a href="/learn">Learn More</a></li>
+            <li class="nav-list-item"><a href="/get_involved">Get Involved!</a></li>
+            <li class="nav-list-item"><a href="/news">News</a></li>
+            <li class="nav-list-item"><a href="/about">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="pagebody">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try{
+    var pageTracker = _gat._getTracker("UA-13090118-1");
+    pageTracker._trackPageview();
+    } catch(err) {}
+  </script>
+</body>
+</html>

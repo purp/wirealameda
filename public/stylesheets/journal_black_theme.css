@@ -1,0 +1,21 @@
+/* dark grey */
+#banner {
+    background: #222;
+    border-bottom: 1px solid #111;
+}
+#banner-header a {
+    color: #ddd;
+}
+#banner-header a:hover {
+    color: #fff;
+}
+a, .entry-header a:hover {
+    color: #059;
+}
+a:hover {
+    color: #069;
+}
+#banner-description {
+    color: #777;
+    border-left: 1px solid #444;
+}
