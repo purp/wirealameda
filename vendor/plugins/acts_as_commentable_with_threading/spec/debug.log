@@ -1,0 +1,77 @@
+# Logfile created on Mon Feb 08 16:53:37 -0800 2010 by logger.rb/22285
+  [4;36;1mSQL (1.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE TABLE "commentables" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "commentable_id" integer DEFAULT 0, "commentable_type" varchar(15) DEFAULT '', "title" varchar(255) DEFAULT '', "body" text DEFAULT '', "subject" varchar(255) DEFAULT '', "user_id" integer DEFAULT 0 NOT NULL, "parent_id" integer, "lft" integer, "rgt" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE INDEX "index_comments_on_commentable_id" ON "comments" ("commentable_id")[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;35;1mComment Create (0.1ms)[0m   [0mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 1, '', 1, NULL, 2)[0m
+  [4;36;1mUser Create (0.2ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 3, '', 2, NULL, 4)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "comments" WHERE ("comments".parent_id = 2) [0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 5, '', 3, NULL, 6)[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'This is a grandchild', 0, '2010-02-08 16:53:37', 7, '', 3, NULL, 8)[0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 3) [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 4) [0m
+  [4;35;1mComment Update (0.2ms)[0m   [0mUPDATE "comments" SET "lft" = CASE WHEN "lft" BETWEEN 6 AND 6 THEN "lft" + 8 - 6 WHEN "lft" BETWEEN 7 AND 8 THEN "lft" + 6 - 7 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 6 AND 6 THEN "rgt" + 8 - 6 WHEN "rgt" BETWEEN 7 AND 8 THEN "rgt" + 6 - 7 ELSE "rgt" END, "parent_id" = CASE WHEN id = 4 THEN 3 ELSE "parent_id" END WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 3) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 4) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "comments" WHERE ("comments".parent_id = 3) [0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;35;1mComment Create (0.1ms)[0m   [0mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 9, '', 4, NULL, 10)[0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 11, '', 5, NULL, 12)[0m
+  [4;35;1mUser Create (0.1ms)[0m   [0mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;35;1mComment Create (0.1ms)[0m   [0mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 13, '', 6, NULL, 14)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;35;1mComment Create (0.1ms)[0m   [0mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Child comment', 0, '2010-02-08 16:53:37', 15, '', 6, NULL, 16)[0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 7) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 8) [0m
+  [4;36;1mComment Update (0.2ms)[0m   [0;1mUPDATE "comments" SET "lft" = CASE WHEN "lft" BETWEEN 14 AND 14 THEN "lft" + 16 - 14 WHEN "lft" BETWEEN 15 AND 16 THEN "lft" + 14 - 15 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 14 AND 14 THEN "rgt" + 16 - 14 WHEN "rgt" BETWEEN 15 AND 16 THEN "rgt" + 14 - 15 ELSE "rgt" END, "parent_id" = CASE WHEN id = 8 THEN 7 ELSE "parent_id" END WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;35;1mComment Load (0.2ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 7) [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 8) [0m
+  [4;35;1mComment Load (0.2ms)[0m   [0mSELECT * FROM "comments" WHERE ("comments"."id" = 7) [0m
+  [4;36;1mUser Create (0.1ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at") VALUES('2010-02-08 16:53:37', '2010-02-08 16:53:37')[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Root comment', 0, '2010-02-08 16:53:37', 17, '', 7, NULL, 18)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("comments".rgt) AS max_rgt FROM "comments" WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Create (0.1ms)[0m   [0;1mINSERT INTO "comments" ("created_at", "commentable_type", "title", "body", "commentable_id", "updated_at", "lft", "subject", "user_id", "parent_id", "rgt") VALUES('2010-02-08 16:53:37', '', '', 'Child comment', 0, '2010-02-08 16:53:37', 19, '', 7, NULL, 20)[0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 9) [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 10) [0m
+  [4;35;1mComment Update (0.2ms)[0m   [0mUPDATE "comments" SET "lft" = CASE WHEN "lft" BETWEEN 18 AND 18 THEN "lft" + 20 - 18 WHEN "lft" BETWEEN 19 AND 20 THEN "lft" + 18 - 19 ELSE "lft" END, "rgt" = CASE WHEN "rgt" BETWEEN 18 AND 18 THEN "rgt" + 20 - 18 WHEN "rgt" BETWEEN 19 AND 20 THEN "rgt" + 18 - 19 ELSE "rgt" END, "parent_id" = CASE WHEN id = 10 THEN 9 ELSE "parent_id" END WHERE ("comments"."commentable_id" = 0 AND "comments"."commentable_type" = '') [0m
+  [4;36;1mComment Load (0.1ms)[0m   [0;1mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 9) [0m
+  [4;35;1mComment Load (0.1ms)[0m   [0mSELECT "lft", "rgt", "parent_id" FROM "comments" WHERE ("comments"."id" = 10) [0m
+  [4;36;1mComment Load (0.3ms)[0m   [0;1mSELECT * FROM "comments" WHERE ("comments".parent_id = 9) ORDER BY "lft" LIMIT 1[0m
