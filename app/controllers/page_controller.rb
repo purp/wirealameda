@@ -22,5 +22,8 @@ class PageController < ApplicationController
   def about
     @page_title = 'About'
   end
-
+  
+  def rfi
+    @page_title = 'RFI Submission'
+  end
 end

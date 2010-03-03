@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'learn', :controller => 'page', :action => 'learn'
   map.connect 'get_involved', :controller => 'page', :action => 'get_involved'
   map.connect 'about', :controller => 'page', :action => 'about'
+  map.connect 'rfi', :controller => 'page', :action => 'rfi'
   map.root :controller => 'page', :action => 'home'
   
 
