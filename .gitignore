@@ -1,2 +1,8 @@
 log
+vendor/gems/nokogiri-*/ext/nokogiri/Makefile
+vendor/gems/nokogiri-*/ext/nokogiri/conftest.dSYM/
+vendor/gems/nokogiri-*/ext/nokogiri/*.o
+vendor/gems/nokogiri-*/ext/nokogiri/mkmf.log
+vendor/gems/nokogiri-*/*/nokogiri/nokogiri.bundle
+
 

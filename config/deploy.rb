@@ -25,18 +25,6 @@ task :staging do
   role :app, "rubygoldberg.com"
   role :web, "rubygoldberg.com"
   role :db,  "rubygoldberg.com", :no_release => true, :primary => true
-  
-  namespace :deploy do
-    desc "Restarting mod_rails with restart.txt"
-    task :restart, :roles => :app, :except => { :no_release => true } do
-      run "touch #{current_path}/tmp/restart.txt"
-    end
-
-    [:start, :stop].each do |t|
-      desc "#{t} task is a no-op with mod_rails"
-      task t, :roles => :app do ; end
-    end
-  end
 end
 
 task :production do
@@ -51,16 +39,22 @@ task :production do
   role :app, "rubygoldberg.com"
   role :web, "rubygoldberg.com"
   role :db,  "rubygoldberg.com", :no_release => true, :primary => true
-  
-  namespace :deploy do
-    desc "Restarting mod_rails with restart.txt"
-    task :restart, :roles => :app, :except => { :no_release => true } do
-      run "touch #{current_path}/tmp/restart.txt"
-    end
+end
 
-    [:start, :stop].each do |t|
-      desc "#{t} task is a no-op with mod_rails"
-      task t, :roles => :app do ; end
-    end
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
   end
+
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+  
+  desc "Build the nokogiri gem locally"
+  task :rebuild_nokogiri, :roles => :app, :except => {:no_release => true } do
+    run "cd #{current_path}/vendor/gems/nokogiri*/ext/nokogiri && ruby extconf.rb --with-xslt-include=/home/selequa/extras/include/ --with-xslt-lib=/home/selequa/extras/lib/ && make"
+  end
+  alias :before_restart :rebuild_nokogiri
 end
