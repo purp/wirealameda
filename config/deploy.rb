@@ -53,8 +53,7 @@ namespace :deploy do
   end
   
   desc "Build the nokogiri gem locally"
-  task :rebuild_nokogiri, :roles => :app, :except => {:no_release => true } do
+  task :before_restart, :roles => :app, :except => {:no_release => true } do
     run "cd #{current_path}/vendor/gems/nokogiri*/ext/nokogiri && ruby extconf.rb --with-xslt-include=/home/selequa/extras/include/ --with-xslt-lib=/home/selequa/extras/lib/ && make"
   end
-  alias :before_restart :rebuild_nokogiri
 end
