@@ -31,14 +31,10 @@ task :production do
   set :deploy_to, "/home/selequa/wirealameda.org"
   set :deployment, 'production'
   set :branch, 'master'
-  # set :domain, 'wirealameda.org'
-  # role :app, "wirealameda.org"
-  # role :web, "wirealameda.org"
-  # role :db,  "wirealameda.org", :no_release => true, :primary => true
-  set :domain, 'rubygoldberg.com'
-  role :app, "rubygoldberg.com"
-  role :web, "rubygoldberg.com"
-  role :db,  "rubygoldberg.com", :no_release => true, :primary => true
+  set :domain, 'wirealameda.org'
+  role :app, "wirealameda.org"
+  role :web, "wirealameda.org"
+  role :db,  "wirealameda.org", :no_release => true, :primary => true
 end
 
 namespace :deploy do

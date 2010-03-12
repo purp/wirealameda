@@ -2,10 +2,12 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   
   map.connect 'news', :controller => 'page', :action => 'news'
-  map.connect 'learn', :controller => 'page', :action => 'learn'
+  # map.connect 'learn', :controller => 'page', :action => 'learn'
   map.connect 'get_involved', :controller => 'page', :action => 'get_involved'
   map.connect 'about', :controller => 'page', :action => 'about'
   map.connect 'rfi', :controller => 'page', :action => 'rfi'
+  map.connect 'why_alameda', :controller => 'page', :action => 'why_alameda'
+  map.connect 'hey_google', :controller => 'page', :action => 'hey_google'
   map.root :controller => 'page', :action => 'home'
   
 

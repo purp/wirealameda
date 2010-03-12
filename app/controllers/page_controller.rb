@@ -26,4 +26,12 @@ class PageController < ApplicationController
   def rfi
     @page_title = 'RFI Submission'
   end
+  
+  def why_alameda
+    @page_title = 'Why Alameda?'
+  end
+  
+  def hey_google
+    @page_title = 'Hey, GOOGLE!'
+  end
 end
