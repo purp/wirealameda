@@ -133,7 +133,7 @@ h2.comments-open-header {
 .entry-content {
     line-height: 1.8;
     margin: 0 0 10px;
-    font-size: 13px;
+    font-size: 15px;
 }
 .entry-content p {
     text-indent: 1em;
@@ -176,7 +176,7 @@ h2.comments-open-header {
     color: #444;
     font-style: italic;
     padding: 5px 10px 5px 10px;
-    font-size: 13px;
+    font-size: 15px;
 }
 .entry-content pre {
     background: #f2f2f2;
@@ -272,7 +272,7 @@ h2.comments-open-header {
     color: #999;
 }
 .comment-content {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.8;
 }
 .comment-footer {
@@ -328,7 +328,7 @@ h2.comments-open-header {
     padding: 2px 0 2px 22px;
     background: url(theme-journal_black/feed-icon-16x16.gif) no-repeat 0 4px;
     display: block;
-    font-size: 13px;
+    font-size: 15px;
     font-family: arial;
 }
 
@@ -437,7 +437,7 @@ h2.comments-open-header {
         margin: 0;
         padding: 5px 15px;
         color: #fff;
-        font-size: 13px;
+        font-size: 15px;
         font-weight: bold;
         text-align: right;
     }
@@ -596,12 +596,23 @@ a:hover { color: #069; }
 .nav-list {
 }
 .nav-list-item a {
-    font-size: 13px;
+    font-size: 15px;
     margin-right: 20px;
     padding: 12px 0px 4px;
     text-decoration: none;
     border-bottom: 4px solid #fff;
     color: #999;
+}
+.nav-list-item a {
+    font-size: 15px;
+    margin-right: 20px;
+    padding: 12px 0px 4px;
+    text-decoration: none;
+    border-bottom: 4px solid #fff;
+    color: #999;
+}
+.nav-list-item-strong a {
+    color: #555;
 }
 .nav-list-item a:hover {
     border-bottom: 4px solid #eee;
@@ -613,7 +624,7 @@ a:hover { color: #069; }
 
 .module-powered .module-content {
     background-color: #eee;
-    font-size: 13px;
+    font-size: 15px;
     font-style: italic;
     color: #222;
     margin: 10px 30px;
