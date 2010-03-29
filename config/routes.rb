@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'rfi', :controller => 'page', :action => 'rfi'
   map.connect 'why_alameda', :controller => 'page', :action => 'why_alameda'
   map.connect 'hey_google', :controller => 'page', :action => 'hey_google'
-  map.root :controller => 'page', :action => 'home'
+  map.root :controller => 'page', :action => 'hey_google'
   
 
   # Sample of regular route:
